@@ -43,6 +43,9 @@ function onDataReceived(text) {
   else if (text==='help\n'){
     help();
   }
+  else if (text.substr(0,6)=="remove"){
+    remove(text.trim());
+  }
   else if (text==='list\n'){
     list(arr);
   }
@@ -130,3 +133,15 @@ function add(text){
   arr.push(item.trim())
   }
   }
+
+function remove(text){
+  if(text=='remove'){
+    arr.pop();
+  }
+  else if(text=='remove 1'){
+    arr.shift();
+  }
+  else if (text=='remove 2'){
+    arr.splice(1,1);
+  }
+} 
