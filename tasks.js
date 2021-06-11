@@ -94,6 +94,7 @@ startApp("Mohammad Anwar Tabbaa")
  */
 function help(){
   console.log("hello : Says hello") ;
+  console.log("hello with anything   : hello anything!  ") ;
   console.log("exit : Exits the application");
   console.log("quit : Exits the application") ;
   console.log("help : lists all the possible commands") ;
@@ -101,6 +102,6 @@ function help(){
 }
 
 function extended(text){
-    console.log(text.replace("\n","")+"!");
+        console.log(text.replace("\n","")+"!");
 }
 
