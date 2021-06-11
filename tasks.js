@@ -107,6 +107,11 @@ function help(){
   console.log("exit : Exits the application");
   console.log("quit : Exits the application") ;
   console.log("help : lists all the possible commands") ;
+  console.log("list : lists all tasks") ;
+  console.log("add : add new task") ;
+  console.log("remove : remove last task") ;
+  console.log("remove 1 : remove first task") ;
+  console.log("remove 2: remove second task") ;
 
 }
 
