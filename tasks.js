@@ -49,6 +49,9 @@ function onDataReceived(text) {
   else if (text.substr(0,6)=="hello "){
     extended(text);
   }
+  else if (text.substr(0,4)=="add "){
+    add(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -117,3 +120,13 @@ function list(arr){
     console.log( i+1 +" "+arr[i]);
   }
 }
+
+function add(text){
+
+ var item =  text.replace("add","");
+  if(item.trim()==""){
+    console.log("error")
+  }else {
+  arr.push(item.trim())
+  }
+  }
