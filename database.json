@@ -1,0 +1,26 @@
+[
+    {
+        "task": "task A",
+        "checked": false
+    },
+    {
+        "task": "task B ",
+        "checked": true
+    },
+    {
+        "task": "task C",
+        "checked": true
+    },
+    {
+        "task": "anwar",
+        "checked": false
+    },
+    {
+        "task": "tabbaa",
+        "checked": false
+    },
+    {
+        "task": "codi",
+        "checked": true
+    }
+]

@@ -69,6 +69,24 @@ function onDataReceived(text) {
   }
 }
 
+const fs = require('fs');
+let arr
+try {
+
+    const data = fs.readFileSync('./database.json', 'utf8');
+
+    // parse JSON string to JSON object
+     arr = JSON.parse(data);
+
+
+    
+    
+
+} catch (err) {
+    console.log(`Error reading file from disk: ${err}`);
+}
+
+
 
 /**
  * prints "unknown command"
@@ -98,6 +116,7 @@ function hello(){
  * @returns {void}
  */
 function quit(){
+  saveData();
   console.log('Quitting now, goodbye!')
   process.exit();
 }
@@ -129,11 +148,7 @@ function extended(text){
         console.log(text.replace("\n","")+"!");
 }
 
-const arr = [
-  {"task":"task A" , "checked" : true} ,
-   {"task":"task B " , "checked" : false} ,
-    {"task":"task C" , "checked" : true}
-  ];
+
 
 
 function list(arr){
@@ -242,7 +257,24 @@ function remove(text){
   }
 
   
+function saveData(){
+  const fs = require('fs');
 
+
+try {
+
+    // convert JSON object to a string
+    const data = JSON.stringify(arr, null, 4);
+
+    // write file to disk
+    fs.writeFileSync('./database.json', data, 'utf8');
+     arr=[];
+    console.log(`File is written successfully!`);
+
+} catch (err) {
+    console.log(`Error writing file: ${err}`);
+}
+}
   
 
 
