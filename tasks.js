@@ -149,4 +149,7 @@ function remove(text){
   else if (text=='remove 2'){
     arr.splice(1,1);
   }
+  else{
+    console.log("you enter a number that does not exist")
+  }
 } 
