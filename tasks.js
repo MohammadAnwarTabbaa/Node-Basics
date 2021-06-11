@@ -43,6 +43,9 @@ function onDataReceived(text) {
   else if (text==='help\n'){
     help();
   }
+  else if (text==='list\n'){
+    list(arr);
+  }
   else if (text.substr(0,6)=="hello "){
     extended(text);
   }
@@ -105,3 +108,12 @@ function extended(text){
         console.log(text.replace("\n","")+"!");
 }
 
+const arr = ["task A " , "task B " , "task C"];
+
+
+function list(arr){
+  var i ; 
+  for(i = 0 ; i<arr.length ; i++){
+    console.log( i+1 +" "+arr[i]);
+  }
+}
