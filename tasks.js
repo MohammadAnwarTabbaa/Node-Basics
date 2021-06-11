@@ -58,6 +58,12 @@ function onDataReceived(text) {
   else if (text.substr(0,4)=="edit"){
     edit(text.trim());
   }
+  else if(text.substr(0,5)=="check"){
+ check(text.trim());
+  }
+  else if(text.substr(0,7)=="uncheck"){
+    unCheck(text.trim());
+  }
   else{
     unknownCommand(text);
   }
@@ -178,7 +184,7 @@ function remove(text){
   
  
 
-function edit(text){
+  function edit(text){
   var anwar = (text.replace("edit","")).trim();
   var index = parseInt(anwar[0]);
   anwar = (anwar.substr(1)).trim();
@@ -197,7 +203,44 @@ function edit(text){
     else arr[arr.length -1]["task"]=anwar ;
     
   }
- 
+
+
+  function check(text){
+    var anwar = (text.replace("check","")).trim();
+    var index = parseInt(anwar);
+    if(text.trim()=='check'){
+      console.log("error")
+    } 
+    else if(Number.isInteger(index)){
+      if(index>arr.length || index<=0){
+        console.log("there is no task "+index )
+      }
+      else{
+      arr[index-1]["checked"]=true;
+      }
+    }
+    else {unknownCommand(".");}
+  }
+
+
+  function unCheck(text){
+    var anwar = (text.replace("uncheck","")).trim();
+    var index = parseInt(anwar);
+    if(text.trim()=='uncheck'){
+      console.log("error")
+    } 
+    else if(Number.isInteger(index)){
+      if(index>arr.length || index<=0){
+        console.log("there is no task "+index )
+      }
+      else{
+      arr[index-1]["checked"]=false;
+      }
+    }
+    else {unknownCommand(".");}
+  }
+
+  
 
   
 
