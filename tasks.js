@@ -68,21 +68,28 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
+if(process.argv.length==3){
+  const database = process.argv[2]
+}
+else{
+  
+}
+ 
 
 const fs = require('fs');
-let arr
+let arr=[];
+let database=process.argv[2];
+console.log(database)
 try {
-
-    const data = fs.readFileSync('./database.json', 'utf8');
-
+  if(process.argv.length==3){
+     data = fs.readFileSync('./'+database.trim()+'.json', 'utf8');
+    }
     // parse JSON string to JSON object
+    else{data = fs.readFileSync('./database.json', 'utf8');}
      arr = JSON.parse(data);
 
-
-    
-    
-
-} catch (err) {
+} 
+catch (err) {
     console.log(`Error reading file from disk: ${err}`);
 }
 
@@ -117,6 +124,7 @@ function hello(){
  */
 function quit(){
   saveData();
+  arr=[];
   console.log('Quitting now, goodbye!')
   process.exit();
 }
@@ -267,14 +275,15 @@ try {
     const data = JSON.stringify(arr, null, 4);
 
     // write file to disk
-    fs.writeFileSync('./database.json', data, 'utf8');
-     arr=[];
+    fs.writeFileSync('./'+database+'.json', data, 'utf8');
+     
     console.log(`File is written successfully!`);
 
 } catch (err) {
     console.log(`Error writing file: ${err}`);
 }
 }
+
   
 
 
