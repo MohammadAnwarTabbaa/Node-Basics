@@ -55,6 +55,9 @@ function onDataReceived(text) {
   else if (text.substr(0,4)=="add "){
     add(text);
   }
+  else if (text.substr(0,4)=="edit"){
+    edit(text.trim());
+  }
   else{
     unknownCommand(text);
   }
@@ -153,3 +156,16 @@ function remove(text){
     console.log("you enter a number that does not exist")
   }
 } 
+
+function edit(text){
+   if(text=='edit new text'){
+    arr[arr.length -1]="new text" ;
+  }
+  else if (text=='edit 1 new text'){
+    arr[0]="new text" ;
+  }
+  else{
+    console.log("error")
+  }
+
+}
