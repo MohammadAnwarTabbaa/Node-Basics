@@ -43,6 +43,9 @@ function onDataReceived(text) {
   else if (text==='help\n'){
     help();
   }
+  else if (text.substr(0,6)=="hello "){
+    extended(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -96,3 +99,8 @@ function help(){
   console.log("help : lists all the possible commands") ;
 
 }
+
+function extended(text){
+    console.log(text.replace("\n","")+"!");
+}
+
