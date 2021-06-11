@@ -119,8 +119,9 @@ function help(){
   console.log("list : lists all tasks") ;
   console.log("add : add new task") ;
   console.log("remove : remove last task") ;
-  console.log("remove 1 : remove first task") ;
-  console.log("remove 2: remove second task") ;
+  console.log("remove (index) : remove task from his index") ;
+  console.log("check : to mark task as done") ;
+  console.log("uncheck: to mark task as ongoing {uncheck task}") ;
 
 }
 
