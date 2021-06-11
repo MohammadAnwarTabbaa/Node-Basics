@@ -52,7 +52,7 @@ function onDataReceived(text) {
   else if (text.substr(0,6)=="hello "){
     extended(text);
   }
-  else if (text.substr(0,4)=="add "){
+  else if (text.substr(0,3)=="add"){
     add(text);
   }
   else if (text.substr(0,4)=="edit"){
@@ -122,13 +122,23 @@ function extended(text){
         console.log(text.replace("\n","")+"!");
 }
 
-const arr = ["task A " , "task B " , "task C"];
+const arr = [
+  {"task":"task A" , "checked" : true} ,
+   {"task":"task B " , "checked" : false} ,
+    {"task":"task C" , "checked" : true}
+  ];
 
 
 function list(arr){
   var i ; 
   for(i = 0 ; i<arr.length ; i++){
-    console.log( i+1 +" "+arr[i]);
+    if(arr[i].checked==true){
+      console.log("[\u2713] "+ (i+1) +" "+arr[i].task);
+    }
+    else{
+      console.log("[ ] "+ (i+1) +" "+arr[i].task);
+    }
+  
   }
 }
 
@@ -138,34 +148,59 @@ function add(text){
   if(item.trim()==""){
     console.log("error")
   }else {
-  arr.push(item.trim())
+    var obj ={};
+   obj["task"]=item.trim() ; 
+   obj["checked"]=false; 
+   arr.push(obj);
   }
   }
 
 function remove(text){
-  if(text=='remove'){
-    arr.pop();
+  var anwar = (text.replace("remove","")).trim();
+  var index = parseInt(anwar);
+  if(text==="remove"){
+  arr.pop();
   }
-  else if(text=='remove 1'){
-    arr.shift();
+  else if(Number.isInteger(index)){
+    if(index>arr.length || index<=0){
+      console.log("there is no task "+index )
+    }
+    else{
+    arr.splice(index-1,index-1);
+    }
   }
-  else if (text=='remove 2'){
-    arr.splice(1,1);
-  }
-  else{
-    console.log("you enter a number that does not exist")
-  }
-} 
+  else {unknownCommand(".");}
+}
+  
+  
+  
+  
+  
+ 
 
 function edit(text){
-   if(text=='edit new text'){
-    arr[arr.length -1]="new text" ;
-  }
-  else if (text=='edit 1 new text'){
-    arr[0]="new text" ;
-  }
-  else{
+  var anwar = (text.replace("edit","")).trim();
+  var index = parseInt(anwar[0]);
+  anwar = (anwar.substr(1)).trim();
+  if(text.trim()=='edit'){
     console.log("error")
   }
 
-}
+   else if(Number.isInteger(index)){
+    if(index>arr.length || index<=0){
+      console.log("there is no task "+index )
+    }
+    else{
+    arr[index-1]["task"]=anwar;
+    }
+   }
+    else arr[arr.length -1]["task"]=anwar ;
+    
+  }
+ 
+
+  
+
+
+  
+
