@@ -84,7 +84,11 @@ function quit(){
 // The following line starts the application
 startApp("Mohammad Anwar Tabbaa")
 
-// get com
+/**
+ * lists all the possible commands
+ *
+ * @returns {void}
+ */
 function help(){
   console.log("hello : Says hello") ;
   console.log("exit : Exits the application");
